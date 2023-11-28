@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Description</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        .button {
+            margin-bottom: 10px;
+        }
+        .description {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button" onclick="toggleDescription(1)">Button 1</button>
+        <div class="description" id="description1">
+            <p>This is the description for Button 1.</p>
+            <a href="#">Link 1</a>
+        </div>
+        <button class="button" onclick="toggleDescription(2)">Button 2</button>
+        <div class="description" id="description2">
+            <p>This is the description for Button 2.</p>
+            <a href="#">Link 2</a>
+        </div>
+        <button class="button" onclick="toggleDescription(3)">Button 3</button>
+        <div class="description" id="description3">
+            <p>This is the description for Button 3.</p>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleDescription(id) {
+            var description = document.getElementById('description' + id);
+            if (description.style.display === "none") {
+                description.style.display = "block";
+            } else {
+                description.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
