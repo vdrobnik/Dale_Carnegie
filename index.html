@@ -1,105 +1,127 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Description</title>
+    <title>Telegram Web App</title>
     <style>
         :root {
-            --tg-theme-text-color: #FFFFFF; /* цвет текста в Telegram */
-            --tg-theme-bg-color: #0088cc;   /* цвет фона в Telegram */
+            --tg-theme-bg-color: #0088cc;   /* Цвет фона в Telegram */
+            --tg-theme-text-color: #1d2021; /* Цвет текста в Telegram */
         }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(5, auto); /* 5 кнопок */
-            gap: 10px;
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--tg-theme-text-color);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: scroll;
+            background-color: var(--tg-theme-bg-color);
+            margin: 0;
         }
         .button {
-            padding: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #66b3ff; /* Голубой цвет фона для кнопок */
             color: var(--tg-theme-text-color);
-            background-color: var(--tg-theme-bg-color);
             border: none;
             cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: left;
         }
         .inner-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 3, 6, 12, 9, 7 кнопок внутри */
-            gap: 10px;
+            display: none; /* При отображении кнопки скрываем внутренние кнопки */
         }
         .inner-button {
-            padding: 5px;
-            background-color: #e0e0e0;
-            border: 1px solid #000;
-            text-align: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #b3d9ff; /* Светло-голубой цвет фона для внутренних кнопок */
+            color: var(--tg-theme-text-color);
+            border: none;
             cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: left;
         }
         .description {
             display: none;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #e6e6e6; /* Светло-серый цвет фона для описания */
+            color: #333;
+            width: 100%;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <button class="button" onclick="toggleInnerButtons(1)">Button 1</button>
+    <div>
+        <button class="button" onclick="toggleInnerButtons(1, event)">Button 1</button>
         <div class="inner-buttons" id="innerButtons1">
-            <!-- Внутренние кнопки для Button 1 -->
-            <div class="inner-button" onclick="toggleDescription(1, 1)">Inner Button 1</div>
-            <div class="inner-button" onclick="toggleDescription(1, 2)">Inner Button 2</div>
-            <div class="inner-button" onclick="toggleDescription(1, 3)">Inner Button 3</div>
+            <button class="inner-button" onclick="showDescription(1, 1)">Inner Button 1</button>
+            <button class="inner-button" onclick="showDescription(1, 2)">Inner Button 2</button>
+            <button class="inner-button" onclick="showDescription(1, 3)">Inner Button 3</button>
         </div>
-        <button class="button" onclick="toggleInnerButtons(2)">Button 2</button>
+        <button class="button" onclick="toggleInnerButtons(2, event)">Button 2</button>
         <div class="inner-buttons" id="innerButtons2">
-            <!-- Внутренние кнопки для Button 2 -->
-            <div class="inner-button" onclick="toggleDescription(2, 1)">Inner Button 1</div>
-            <div class="inner-button" onclick="toggleDescription(2, 2)">Inner Button 2</div>
-            <div class="inner-button" onclick="toggleDescription(2, 3)">Inner Button 3</div>
-            <div class="inner-button" onclick="toggleDescription(2, 4)">Inner Button 4</div>
-            <div class="inner-button" onclick="toggleDescription(2, 5)">Inner Button 5</div>
-            <div class="inner-button" onclick="toggleDescription(2, 6)">Inner Button 6</div>
+            <button class="inner-button" onclick="showDescription(2, 1)">Inner Button 1</button>
+            <button class="inner-button" onclick="showDescription(2, 2)">Inner Button 2</button>
+            <button class="inner-button" onclick="showDescription(2, 3)">Inner Button 3</button>
+            <button class="inner-button" onclick="showDescription(2, 4)">Inner Button 4</button>
+            <button class="inner-button" onclick="showDescription(2, 5)">Inner Button 5</button>
+            <button class="inner-button" onclick="showDescription(2, 6)">Inner Button 6</button>
         </div>
-        <!-- Добавьте оставшиеся кнопки и внутренние кнопки согласно вашим требованиям -->
-    </div>
-
-    <!-- Всплывающие окна для описаний и ссылок -->
-    <div class="description" id="description">
-        <p id="descriptionText">This is the description for the button.</p>
-        <a id="descriptionLink" href="#">Link</a>
+        <button class="button" onclick="toggleInnerButtons(3, event)">Button 3</button>
+        <div class="inner-buttons" id="innerButtons3">
+            <button class="inner-button" onclick="showDescription(3, 1)">Inner Button 1</button>
+            <button class="inner-button" onclick="showDescription(3, 2)">Inner Button 2</button>
+            <button class="inner-button" onclick="showDescription(3, 3)">Inner Button 3</button>
+            <button class="inner-button" onclick="showDescription(3, 4)">Inner Button 4</button>
+            <button class="inner-button" onclick="showDescription(3, 5)">Inner Button 5</button>
+            <button class="inner-button" onclick="showDescription(3, 6)">Inner Button 6</button>
+            <button class="inner-button" onclick="showDescription(3, 7)">Inner Button 7</button>
+            <button class="inner-button" onclick="showDescription(3, 8)">Inner Button 8</button>
+            <button class="inner-button" onclick="showDescription(3, 9)">Inner Button 9</button>
+            <button class="inner-button" onclick="showDescription(3, 10)">Inner Button 10</button>
+            <button class="inner-button" onclick="showDescription(3, 11)">Inner Button 11</button>
+            <button class="inner-button" onclick="showDescription(3, 12)">Inner Button 12</button>
+        </div>
+        <!-- Добавьте остальные кнопки и их внутренние кнопки -->
     </div>
 
     <script>
-        // Переключение описания для внутренних кнопок
-        function toggleDescription(buttonId, innerButtonId) {
-            var description = document.getElementById('description');
-            var descriptionText = document.getElementById('descriptionText');
-            var descriptionLink = document.getElementById('descriptionLink');
-            description.style.display = "block";
-            // Здесь можно установить соответствующий текст и ссылку для каждой внутренней кнопки
-            if (buttonId === 1) {
-                if (innerButtonId === 1) {
-                    descriptionText.textContent = "Description for Inner Button 1 of Button 1";
-                    descriptionLink.setAttribute('href', '#');
-                } else if (innerButtonId === 2) {
-                    descriptionText.textContent = "Description for Inner Button 2 of Button 1";
-                    descriptionLink.setAttribute('href', '#');
-                } else if (innerButtonId === 3) {
-                descriptionText.textContent = "Description for Inner Button 3 of Button 1";
-                    descriptionLink.setAttribute('href', '#');
-                }
-            } else if (buttonId === 2) {
-                // Добавьте описания для внутренних кнопок второй кнопки
+        function toggleInnerButtons(buttonId, event) {
+            var innerButtons = document.getElementById('innerButtons' + buttonId);
+            if (innerButtons.style.display === "none" || innerButtons.style.display === "")
+            {
+                innerButtons.style.display = "block";
             }
-            // Добавьте описания для внутренних кнопок остальных кнопок
+            else
+            {
+                innerButtons.style.display = "none";
+            }
+            event.stopPropagation(); // Остановить всплытие события, чтобы клик на кнопке не вызывал скрытие блока
         }
 
-        // Переключение видимости внутренних кнопок
-        function toggleInnerButtons(id) {
-            var innerButtons = document.getElementById('innerButtons' + id);
-            if (innerButtons.style.display === "none") {
-                innerButtons.style.display = "block";
-            } else {
-                innerButtons.style.display = "none";
+        function showDescription(buttonId, innerButtonId) {
+            var description = document.getElementById('description');
+            var descriptionText = document.getElementById("descriptionText");
+            var descriptionLink = document.getElementById("descriptionLink");
+            description.style.display = "block";
+            // Установите соответствующий текст и ссылку для каждой внутренней кнопки
+            if (buttonId === 1 && innerButtonId === 1) {
+                descriptionText.textContent = "Description for Inner Button 1 of Button 1";
+                descriptionLink.href = "Link 1 URL"; // Замените "Link 1 URL" на реальный URL ссылки
+                descriptionLink.textContent = "Link 1"; // Замените "Link 1" на текст ссылки
+            }
+            // Добавьте описания и ссылки для остальных внутренних кнопок
+        }
+
+        // Закрыть описание при клике за пределами блока
+        window.onclick = function(event) {
+            var description = document.getElementById('description');
+            if (event.target !== description) {
+                description.style.display = "none";
             }
         }
     </script>
